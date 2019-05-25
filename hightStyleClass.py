@@ -109,3 +109,158 @@ else:
     print('测试失败!')
 
 """多重继承"""
+#通过继承，子类可以扩展父类的功能  多重继承中各类的属性或方法重复，遵循取左原则
+class Animal(object):#动物
+    pass
+class Mammal(Animal):#哺乳动物
+    pass
+class Bird(Animal):#鸟类
+    pass
+class Dog(Mammal):
+    pass
+class Bat(Mammal):
+    pass
+class Parrot(Bird):
+    pass
+class Ostrich(Bird):
+    pass
+
+class Runnable(object):
+    def run(self):
+        print("Running")
+class Flyable(object):
+    def fly(self):
+        print("Flying")
+#通过多重继承，一个子类就可以同时获得多个父类的所有功能。  多重继承中各类的属性或方法重复，遵循取左原则
+class Dog(Animal,Runnable):
+    pass
+class Bat(Animal,Flyable):
+    pass
+#MixIn 重用其功能的类  如果需要“混入”额外的功能，通过多重继承就可以 实现这种设计通常称之为MixIn。
+#MixIn的目的就是给一个类增加多个功能
+class RunnableMixIn(object):  #只是为了使用该类的某个方法或者某些方法 而且这些方法可以通过该类被多个类继承进行使用(重用其功能)
+    def run(self):
+        print("Running")
+class FlyableMixIn(object):
+    def fly(self):
+        print("Flying")
+
+"""定制类"""
+#__str__
+class Student(object):
+    def __init__(self,name):
+        self.name=name
+print(Student('jem'))#<__main__.Student object at 0x000002209D1605C0>
+#__str__类中定义该方法 打印调用类时会返回该方法返回值
+class Student(object):
+    def __init__(self,name):
+        self.name=name
+    def __str__(self):
+        return self.name
+print(Student("jem"))#jem
+
+#直接敲变量不用print，打印出来的实例还是<__main__.Student object at 0x000002209D1605C0>
+# 因为直接显示变量调用的不是__str__()，而是__repr__()，两者的区别是__str__()返回用户看到的字符串
+s = Student("jem")
+print(s.__repr__())#<__main__.Student object at 0x000002618B471748>
+#所以在控制台的话 要打印该实例不用print就要将__repr__也改写了，可以直接将__repr__=__str__
+
+#__iter__ 一个类想被用于for...in循环或者类似于list、tuple一样就需要实现 它返回一个迭代对象 然后python会不断调用该迭代对象的__next__方法拿到下一个值
+class Fib(object):
+    def __init__(self):
+        self.a,self.b=0,1
+    def __iter__(self):
+        return self   # 实例本身就是迭代对象，故返回自己  因为它具有迭代对象的特征  __next__
+    def __next__(self):
+        self.a,self.b=self.b,self.a+self.b
+        if self.a>100:
+            raise StopIteration()
+        return self.a  # 返回下一个值
+for n in Fib():
+    print(n)
+
+#__getitem__  可以获取对象的某个元素  根据实现该对象可以是list dict 等
+# 可以让对象有list的功能 进行定位取值
+# Fib实例虽然能作用于for循环，看起来和list有点像，但是，把它当成list来使用还是不行(不能进行定位取值)
+#如果把对象看成dict，__getitem__()的参数也可能是一个可以作key的object，例如str
+#__setitem__()方法，把对象视作list或dict来对集合赋值
+#__delitem__()方法，用于删除某个元素
+class Fib(object):
+    def __getitem__(self, item):
+        a,b=1,1
+        for x in range(item):
+            a,b=b,a+b
+        return a
+f=Fib()
+print(f[11])
+
+#实现list的切片方法  __getitem__()传入的参数可能是一个int，也可能是一个切片对象slice
+class Fib(object):
+    def __getitem__(self, item):
+        if isinstance(item,int):
+            a,b=1,1
+            for n in range(item):
+                a,b=b,a+b
+            return a
+        if isinstance(item,slice):
+            start = item.start
+            stop = item.stop
+            if start is None:
+                start=0
+            a,b=1,1
+            L=[]
+            for x in range(stop):
+                if x>=start:
+                    L.append(a)
+                a,b=b,a+b
+            return L
+f=Fib()
+print(f[0:5])
+print(f[:10])
+
+#__getattr__ 动态返回一个属性
+#当调用不存在的属性时，比如score，Python解释器会试图调用__getattr__(self, 'score')来尝试获得属性 返回函数也是完全可以的
+#要让class只响应特定的几个属性，我们就要按照约定，抛出AttributeError的错误
+class Student(object):
+    def __init__(self,name):
+        self.name=name
+    def __getattr__(self, item):
+        if item == "score":
+            return 89
+        if item == 'age':
+            return lambda :25
+        raise AttributeError("参数不存在")
+s = Student("jem")
+print(s.name)
+print(s.score)
+print(s.age)#<function Student.__getattr__.<locals>.<lambda> at 0x0000020E9E82DD08>
+print(s.age())#25
+
+#动态生成API的SDK
+class Chain(object):
+    def __init__(self,path=""):
+        self._path=path
+    def __getattr__(self, item):
+        return Chain("%s/%s"%(self._path,item))
+    def __str__(self):
+        return self._path
+    __repr__=__str__
+print(Chain().status.user.timeline.list)
+
+#__call__ 调用实例本身
+class Chain(object):
+    #REST风格 API
+    def __init__(self,path=""):
+        self._path=path
+    def __getattr__(self, item):
+
+        # if isinstance(item,str):
+            return Chain("%s/%s"%(self._path,item))
+    def __call__(self, *args, **kwargs):
+        return Chain("%s/%s"%(self._path,args[0]))
+    def __str__(self):
+        return self._path
+    __repr__=__str__
+c = Chain()
+print(c(15))#/15
+print(Chain().users('Min').repos.age(15))#/users/Min/repos/age/15    ()后面就相当于调用实例本身 只不过不能再users和('Min')中间加.了
