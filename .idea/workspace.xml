@@ -29,7 +29,7 @@
         <entry file="file://$PROJECT_DIR$/class.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="706">
-              <caret line="135" lean-forward="true" selection-start-line="135" selection-end-line="135" />
+              <caret line="135" selection-start-line="135" selection-end-line="135" />
             </state>
           </provider>
         </entry>
@@ -38,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/hightStyleClass.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="530">
-              <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
+              <caret line="111" selection-start-line="111" selection-end-line="111" />
             </state>
           </provider>
         </entry>
@@ -51,6 +51,9 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -78,6 +81,7 @@
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -255,12 +259,12 @@
       <workItem from="1558185741999" duration="3152000" />
       <workItem from="1558250336060" duration="3982000" />
       <workItem from="1558616181552" duration="4009000" />
-      <workItem from="1558772344849" duration="3691000" />
+      <workItem from="1558772344849" duration="4024000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63116000" />
+    <option name="totallyTimeSpent" value="63449000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -280,7 +284,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2814238" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2817372" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2880979" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -375,7 +379,7 @@
     <entry file="file://$PROJECT_DIR$/class.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="706">
-          <caret line="135" lean-forward="true" selection-start-line="135" selection-end-line="135" />
+          <caret line="135" selection-start-line="135" selection-end-line="135" />
         </state>
       </provider>
     </entry>
@@ -406,7 +410,7 @@
     <entry file="file://$PROJECT_DIR$/hightStyleClass.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="530">
-          <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
+          <caret line="111" selection-start-line="111" selection-end-line="111" />
         </state>
       </provider>
     </entry>
