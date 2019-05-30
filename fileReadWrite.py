@@ -163,7 +163,7 @@ print(json.dumps(s, default=student2dict))
 #下次如果遇到一个Teacher类的实例，照样无法序列化为JSON。我们可以偷个懒，把任意class的实例变为dict
 #class的实例都有一个__dict__属性，它就是一个dict，用来存储实例变量
 print(json.dumps(s, default=lambda obj: obj.__dict__))
-#果我们要把JSON反序列化为一个Student对象实例，loads()方法首先转换出一个dict对象，然后，我们传入的object_hook函数负责把dict转换为Student实例：
+#如果我们要把JSON反序列化为一个Student对象实例，loads()方法首先转换出一个dict对象，然后，我们传入的object_hook函数负责把dict转换为Student实例：
 def dict2student(d):
     return Student(d['name'], d['age'], d['score'])
 json_str = '{"age": 20, "score": 88, "name": "Bob"}'
