@@ -76,6 +76,8 @@ draw.rectangle((200,100,300,200),fill=0,outline=0)#fill=黑色（透明） outli
 im_rgbb=im_rgb.copy()
 im_rgbb.putalpha(im_a)
 im_rgbb.save("C:/Users/john/Pictures/pillow/局部透明.png")
+#打开外部查看器
+im_rgbb.show()
 
 
 
