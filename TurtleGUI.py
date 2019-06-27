@@ -29,9 +29,9 @@ turtle.width(4)
 
 #五角星
 # def drawStar(x,y):
-#     turtle.pu()
+#     turtle.pu()#画笔抬起 penup
 #     turtle.goto(x,y)#画笔起始起始坐标
-#     turtle.pd()
+#     turtle.pd()#画笔落下  pendown
 #     turtle.seth(0)
 #     for i in range(5):
 #         turtle.fd(200)#就是forward
@@ -57,42 +57,42 @@ g = 0
 b = 0
 turtle.pencolor(r, g, b)
 
-turtle.penup()
-turtle.bk(l)
-turtle.pendown()
-turtle.fd(l)
+turtle.penup()#画笔抬起
+turtle.bk(l) #backward
+turtle.pendown()#画笔落下
+turtle.fd(l) #forward
 
 def draw_tree(l, level):
     global r, g, b
     # save the current pen width
     w = turtle.width()
 
-    # narrow the pen width
+    # narrow the pen width 每次递归都是之前的宽度四分之三
     turtle.width(w * 3.0 / 4.0)
     # set color:
     r = r + 1
     g = g + 2
     b = b + 3
-    turtle.pencolor(r % 200, g % 200, b % 200)
+    turtle.pencolor(r % 200, g % 200, b % 200)#设置画笔颜色
 
-    l = 3.0 / 4.0 * l
+    l = 3.0 / 4.0 * l#前进长度
 
-    turtle.lt(s)
-    turtle.fd(l)
+    turtle.lt(s)#左转45度 left
+    turtle.fd(l)#前进l个长度 forward
 
-    if level < lv:
+    if level < lv:#左边树叉递归
         draw_tree(l, level + 1)
-    turtle.bk(l)
-    turtle.rt(2 * s)
-    turtle.fd(l)
+    turtle.bk(l)#回退l长度 backward
+    turtle.rt(2 * s)#右转90度 right
+    turtle.fd(l)#前进l个长度 forward
 
-    if level < lv:
+    if level < lv:#右边树叉递归
         draw_tree(l, level + 1)
-    turtle.bk(l)
-    turtle.lt(s)
+    turtle.bk(l)#backward 后退l个
+    turtle.lt(s)#左转45度 left
 
     # restore the previous pen width
-    turtle.width(w)
+    turtle.width(w)#完了之后将画笔宽度返回至原来的宽度
 
 turtle.speed("fastest")
 
