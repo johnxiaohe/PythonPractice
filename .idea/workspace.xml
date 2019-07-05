@@ -175,7 +175,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="260" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
@@ -334,11 +334,11 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Socket" />
-      <item itemvalue="Python.SocketServer" />
       <item itemvalue="Python.SocketCustomer" />
-      <item itemvalue="Python.SocketUDPServer" />
+      <item itemvalue="Python.SocketServer" />
       <item itemvalue="Python.SocketUDPCustomer" />
+      <item itemvalue="Python.SocketUDPServer" />
+      <item itemvalue="Python.Socket" />
     </list>
     <recent_temporary>
       <list>
