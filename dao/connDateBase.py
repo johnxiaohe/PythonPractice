@@ -31,6 +31,7 @@ cursor=conn.cursor()
 for i in range(4,9):
     cursor.execute('insert into user (id,name) values (%s,%s)',[str(i),str(i)+'asd'])
 
+
 cursor.close()
 conn.commit()
 conn.close()

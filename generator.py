@@ -1,6 +1,6 @@
 #!/usr/bin/env python 
 # -*- coding:utf-8 -*-
-from collectionsPractise import Iterable
+from pracitse.collectionsPractise import Iterable
 #列表生成器  列表数量大 使用即时演算推出，不保存实际内容
 #一边循环一边计算的机制，称为生成器：generator
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python 
 # -*- coding:utf-8 -*-
-from collectionsPractise import Iterable
+from pracitse.collectionsPractise import Iterable
 #迭代
 #循环遍历就是迭代 for...in
 #可迭代类型：list tuple set str dict

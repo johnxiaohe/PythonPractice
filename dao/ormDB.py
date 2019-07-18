@@ -47,5 +47,6 @@ user=session.query(User).filter(User.id=='5').one()
 print('type:',type(user))
 print('name:',user.name)
 #关闭session
+
 session.close()
 
